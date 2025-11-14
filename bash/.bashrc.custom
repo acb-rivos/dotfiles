@@ -1,0 +1,58 @@
+if [ -t 0 ]; then
+    ### prompt
+    eval -- "$($HOME/.cargo/bin/starship init bash --print-full-init)"
+
+    ### completions
+    ### node
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+    ### FZF
+    [[ $- == *i* ]] && source "$HOME/etc/completion.bash" 2> /dev/null
+    source "$HOME/etc/key-bindings.bash"
+fi
+
+### functions
+
+newt () {
+  cd /work/$USER/clones/rvsys && \
+  git worktree add -b $1 /work/$USER/clones/$1 origin/rivos/main &&
+  cd /work/$USER/clones/$1 && \
+  pre-commit install && \
+  git submodule update --init --recursive && \
+  cad/fusesoc/rv_init_fusesoc.py
+}
+
+newwa () {
+  git clone git@gitlab.ba.rivosinc.com:/rv/si/int/rvsys $1 && \
+  cd $1 && \
+  pre-commit install && \
+  git submodule update --init --recursive && \
+  cad/fusesoc/rv_init_fusesoc.py
+}
+
+lt () {
+  API="http://ticketbooth.app.rivosinc.com"
+  N=$(curl -s -I $API/tickets | grep -i x-total-count | choose 1)
+  START=$(($N-100))
+  curl -s "$API/tickets?skip=$START" | jq ".[]"
+}
+
+# auto source env vars based on the current dir
+[[ $(type -P direnv) ]] && eval "$(direnv hook bash)"
+
+
+### aliases
+source ~/.aliases
+
+### misc
+umask 0002
+set -o vi
+
+### environment
+EDITOR=nvim
+PAGER=bat
+UV_CACHE_DIR=/work/acb/uv
+SSH_ASKPASS=/usr/libexec/seahorse/ssh-askpass
+export EDITOR PAGER SSH_ASKPASS UV_CACHE_DIR

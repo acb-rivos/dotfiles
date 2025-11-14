@@ -1,0 +1,17 @@
+! font settings
+Xft.autohint: true
+Xft.antialias: true
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.dpi: 96
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+
+ terminal settings
+XTerm*scrollBar: off
+XTerm*faceName: Mono:size=12
+URxvt*scrollBar: off
+URxvt*font: xft:JetBrainsMono:size=12
+URxvt*letterSpace: -2
+st*scrollBar: off
+st*font: Hack Nerd Font:size=12

@@ -1,0 +1,5 @@
+alias c=clear
+alias m=bat
+alias n=nvim
+alias sq="squeue --array -o '%18i %.20S %.4Q %.9P %.40j %.16u %.2t %.11M %.6D %2C %8m %R %W'"
+alias j=jrnl
