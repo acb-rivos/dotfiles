@@ -14,7 +14,6 @@ With npx:
 
 With pipx:
 * jrnl
-* userpath
 
 With cargo:
 * bat

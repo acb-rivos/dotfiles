@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 set -a
 WLR_BACKENDS=headless
 WAYLAND_DISPLAY=wayland-1

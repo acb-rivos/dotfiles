@@ -53,6 +53,7 @@ set -o vi
 ### environment
 EDITOR=nvim
 PAGER=bat
-UV_CACHE_DIR=/work/acb/uv
+MANPAGER=less
 SSH_ASKPASS=/usr/libexec/seahorse/ssh-askpass
-export EDITOR PAGER SSH_ASKPASS UV_CACHE_DIR
+UV_CACHE_DIR=/work/acb/uv
+export EDITOR MANPAGER PAGER SSH_ASKPASS UV_CACHE_DIR

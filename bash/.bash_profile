@@ -6,6 +6,4 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # User specific environment and startup programs
-$HOME/.local/bin/userpath prepend $HOME/.local/bin
-userpath prepend $HOME/.cargo/bin
-userpath prepend $HOME/bin
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$HOME/bin:$PATH"
